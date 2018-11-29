@@ -12,7 +12,11 @@
 </template>
 
 <style>
+
+
 #app {
+  margin-left: calc(100vw - 100%);
+ /* overflow-y: scroll;*/
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
