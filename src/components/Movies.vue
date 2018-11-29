@@ -1,9 +1,9 @@
 <template>
   <div class="movies">
-    Search by category: <input type="text" v-model="search" placeholder="Search by category" />
+   Search by category: <input type="text" v-model="search" placeholder="Search by category" />
 
   <ul>
-    <li v-for="movie in movies /*filterdMovies */" :key="movie.movie">
+    <li v-for="movie in movies  /*filterdMovies*/ " :key="movie.movie">
      {{ movie.title  }} -
      <router-link :to="{ name: 'movie', params: {id:movie.id} }"> Mer info</router-link> 
      </li>
@@ -14,18 +14,25 @@
 <script>
 export default {
   name: 'Movies',
-  search: '',
+  data(){
+      return {
+         search: ' '
+      }
+  },
   computed: {
-    movies (){
-      return this.$store.state.movies;
-    },
+   movies (){
+      return this.$store.state.movies.filter((movie) =>{
+        return movie.cat.match(this.search);
+      })/*
       filterdMovies: function(){
       return this.$store.state.movies.filter((movie) =>{
-        return movies.cat.match(this.search);
+        return movie.cat.match(this.search);
       }) 
-    } 
+      } */
    }
   }
+}
+
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
